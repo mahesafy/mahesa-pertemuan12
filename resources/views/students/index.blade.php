@@ -13,9 +13,9 @@
                 Logout
             </a>
             <div class="float-end">
-                <a class="btn btn-success" href="{{ route('students.create') }}"><span class="add">
+                <button class="btn btn-success" onclick='$("#create").modal("show")'><span class="add">
                     add
-                </span><b> Create New student</b></a>
+                </span><b> Create New student</b></button>
             </div>
         </div>
     </div><br>
@@ -86,8 +86,50 @@
               Kelas: <div id="kelas"></div>
             </div>
             <div class="modal-footer">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="$('#exampleModal').modal('hide')">Close</button>
+                  </div>
             </div>
           </div>
         </div>
       </div>    
+
+
+      <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('students.store') }}" method="POST">
+                    @csrf
+                  
+                     <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Name:</strong>
+                                <input required type="text" name="name" class="form-control" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Kelas:</strong>
+                                <input required class="form-control" name="kelas" placeholder="Kelas"></input>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
+                            <button type="submit" class="btn btn-success">Save</button>
+                            <a class="btn btn-danger" onclick="$('#create').modal('hide')"> Back</a>
+                        </div>
+                    </div>
+                   
+                </form>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+          </div>
+        </div>
+      </div>  
 @endsection
