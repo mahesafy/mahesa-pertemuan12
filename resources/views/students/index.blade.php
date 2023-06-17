@@ -21,11 +21,10 @@
     </div><br>
    
     @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-           <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button> -->
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <span type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+            {{ $message }}
+            
         </div>
     @endif
    
@@ -163,10 +162,6 @@
                     </div>
                
                 </form>
-            </div>
-            <div class="modal-footer">
-                <div class="modal-footer">
-                  </div>
             </div>
           </div>
         </div>
