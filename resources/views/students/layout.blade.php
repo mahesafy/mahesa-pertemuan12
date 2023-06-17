@@ -165,6 +165,16 @@
         }});
         $('#edit').modal("show");
     }
+
+    function deletes(id){
+        $(" .delete-nama").text("Loading");
+        $("#delete-form").attr("action", "/students/"+id)
+        $.ajax({url: "/students/"+id, success: function(result){
+            let nama = result.split("*")
+            $(" .delete-nama").text(nama[0]);
+        }});
+        $('#delete').modal("show");
+    }
     </script>
 </head>
 <body>

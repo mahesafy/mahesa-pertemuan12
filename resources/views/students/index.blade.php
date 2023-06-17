@@ -57,13 +57,12 @@
                             edit_note
                             </span>
                         <b>Edit</b></a>
-   
-                    @csrf
-                    @method('DELETE')
       
-                    <button type="submit" class="btn btn-danger"><span class="delete">
-                        delete
-                        </span><b>Delete</b></button>
+                        <a class="btn btn-danger" onclick=deletes("{{$student->id}}")>
+                            <span class="material-icons">
+                                delete
+                                </span>
+                            <b>Delete</b></a>
                 </form>
             </td>
         </tr>
@@ -172,4 +171,28 @@
           </div>
         </div>
       </div>   
+
+      <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
+            </div>
+            <div class="modal-body">
+Apakah Kamu ingin menghapus <b class="delete-nama"> </b>?<br><br>
+
+            </div>
+            <div class="modal-footer">
+                <div class="modal-footer">
+                    <form id="delete-form" method="POST">
+                        @csrf
+                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger"><b>Ya, Hapus</b></button>
+                                        <button type="button" class="btn btn-secondary" onclick="$('#delete').modal('hide')">Tidak</button>
+                                        </form>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>    
 @endsection
