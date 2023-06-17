@@ -153,6 +153,18 @@
         }});
         $('#exampleModal').modal("show");
     }
+
+    function edit(id){
+        $(" .edit-nama").text("Loading");
+        $(" .edit-kelas").text("Loading");
+        $("#form-edit").attr("action", "/students/"+id)
+        $.ajax({url: "/students/"+id, success: function(result){
+            let nama = result.split("*")
+            $(" .edit-nama").val(nama[0]);
+            $(" .edit-kelas").val(nama[1]);
+        }});
+        $('#edit').modal("show");
+    }
     </script>
 </head>
 <body>

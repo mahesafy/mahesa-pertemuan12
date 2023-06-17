@@ -52,7 +52,7 @@
                         visibility
                         </span><b style="color:white;">Show</b></a>
     
-                    <a class="btn btn-primary" href="{{ route('students.edit',$student->id) }}">
+                    <a class="btn btn-primary" onclick=edit("{{$student->id}}")>
                         <span class="material-icons">
                             edit_note
                             </span>
@@ -132,4 +132,44 @@
           </div>
         </div>
       </div>  
+
+      <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
+            </div>
+            <div class="modal-body">
+                <form id="form-edit" method="POST">
+                    @csrf
+                    @method('PUT')
+               
+                     <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Name:</strong>
+                                <input type="text" name="name"  class="edit-nama form-control" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Kelas:</strong>
+                                <input class="edit-kelas form-control" name="kelas" placeholder="Kelas">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
+                          <button type="submit" class="btn btn-success">Save</button>
+                          <a class="btn btn-danger" onclick="$('#edit').modal('hide')"> Back</a>
+                        </div>
+                    </div>
+               
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="modal-footer">
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>   
 @endsection
